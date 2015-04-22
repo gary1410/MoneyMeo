@@ -1,0 +1,4 @@
+class Mortgage < Debt
+
+end
+

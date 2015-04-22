@@ -1,0 +1,4 @@
+class CreditCard < Debt
+
+end
+

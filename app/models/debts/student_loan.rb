@@ -1,0 +1,3 @@
+class StudentLoan < Debt
+
+end

@@ -1,0 +1,11 @@
+<%= form_for @debt do |f| %>
+
+    <%= f.label :type %><br>
+    <%= f.select(:type, options_for_select(Debt.types.map {|type| [type.titleize, type]})) %>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+    <%= f.label :rate %>
+    <%= f.text_field :rate %>
+
+    <%= f.submit :submit%>
+<% end %>

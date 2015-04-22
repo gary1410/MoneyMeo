@@ -1,0 +1,2 @@
+class BankLoan < Debt
+end

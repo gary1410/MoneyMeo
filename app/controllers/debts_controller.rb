@@ -12,7 +12,7 @@ class DebtsController < ApplicationController
 		@debt = Debt.new(debt_params)
 		if @debt.save
 			flash[:success] = "You've saved your information"
-			redirect_to expenses_path
+			redirect_to new_expense_path
 		else
 			render :new
 		end

@@ -5,18 +5,9 @@
     <%= f.select(:type, options_for_select(Debt.types.map {|type| [type.titleize, type]})) %>
     <%= f.label :amount %>
     <%= f.text_field :amount %>
-    <%= f.label :monthly_payment %>
-    <%= f.text_field :monthly_payment %>
+    <%= label_tag :monthly_payment %>
+    <%= text_field_tag :monthly_payment %>
     <%= label_tag :rate %>
     <%= text_field_tag :rate %>
     <%= f.submit :submit%>
 <% end %>
-
-<!-- params = > amount, monthly_payment
-
-def create
-	@credit = Credit.new(credit_params)
-	@credit.rate = @credit.monthly_payment / @credit.amount
-	if @credit.save
-	else
-	end -->

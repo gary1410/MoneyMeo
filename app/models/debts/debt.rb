@@ -7,9 +7,11 @@ class Debt < ActiveRecord::Base
 	end
 
 	private
-	
+
 	def set_rate
-		self.rate = monthly_payment / amount
+    raise "wtf"
+    p monthly_payment
+		self.rate = self.monthly_payment / self.amount
 	end
 end
 

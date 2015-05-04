@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20150422010320) do
 
   create_table "debts", force: :cascade do |t|
     t.string   "type"
-    t.integer  "amount"
-    t.integer  "monthly_payment"
+    t.decimal  "amount"
+    t.decimal  "monthly_payment"
     t.decimal  "rate"
     t.string   "act_primary"
     t.string   "act_secondary"

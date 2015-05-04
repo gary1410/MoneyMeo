@@ -3,7 +3,7 @@ class DebtsController < ApplicationController
 	def index
 		@debts = Debt.all
 	end
-	
+
 	def new
 		@debt = Debt.new
 	end

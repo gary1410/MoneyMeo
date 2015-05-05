@@ -12,11 +12,16 @@ class ExpensesController < ApplicationController
 		@expense = Expense.new(expense_params)
 			if @expense.save
 			flash[:success] = "You've saved your information"
-				redirect_to expenses_path	
+				redirect_to expense_path(@expense)
 			else
 				render :new
 			end
 	end
+
+	def show
+		@expense = Expense.find(params[:id])
+	end
+
 
 	def edit
 		@expense = Expense.find(params[:id])
@@ -25,7 +30,7 @@ class ExpensesController < ApplicationController
 	def update
 		@expense = Expense.find(params[:id])
 		if @expense.update(expense_params)
-			flash[:success] = "Updated!" 
+			flash[:success] = "Updated!"
 			redirect_to expenses_path
 		else
 			render :edit

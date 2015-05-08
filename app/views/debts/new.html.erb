@@ -1,13 +1,15 @@
 <h3> Lets get started! Click on each category and list all the debt you have outstanding. Fill in the blanks </h3>
-<%= form_for @debt do |f| %>
+<table>
+	<%= form_for @debt do |f| %>
 
-    <%= f.label :type %><br>
-    <%= f.select(:type, options_for_select(Debt.types.map {|type| [type.titleize, type]})) %>
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-    <%= label_tag :monthly_payment %>
-    <%= text_field_tag :monthly_payment %>
-    <%= label_tag :rate %>
-    <%= text_field_tag :rate %>
-    <%= f.submit :submit%>
-<% end %>
+	    <%= f.label :type %><br>
+	    <%= f.select(:type, options_for_select(Debt.types.map {|type| [type.titleize, type]})) %>
+	    <%= f.label :amount %>
+	    <%= f.text_field :amount %>
+	    <%= label_tag :monthly_payment %>
+	    <%= text_field_tag :monthly_payment %>
+	    <%= label_tag :rate %>
+	    <%= text_field_tag :rate %>
+	    <%= f.submit :submit%>
+	<% end %>
+</table>

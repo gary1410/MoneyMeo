@@ -7,7 +7,7 @@ class IncomesController < ApplicationController
   def create
     @income = Income.new(income_params)
       if @income.save
-        flash[:success] = "You've savied your income info"
+        flash[:success] = "You've saveed your income info"
         redirect_to income_path(@income)
       else
         render :new

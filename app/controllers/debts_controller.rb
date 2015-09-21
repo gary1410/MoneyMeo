@@ -5,12 +5,14 @@ class DebtsController < ApplicationController
 	end
 
 	def new
+		# session[:user_identifier] = Random Hex
 		@debt = Debt.new
 	end
 
 	def create
 		@debt = Debt.new(debt_params)
-		Debt.set_rate
+		@debt.set_rate
+		# @debt.user_identifier = session[:user_identifier]
 		if @debt.save
 			flash[:success] = "You've saved your information"
 			redirect_to new_expense_path
@@ -22,11 +24,7 @@ class DebtsController < ApplicationController
 private
 
 	def debt_params
-		params.require(:debt).permit(:type, :amount, :montly_payment, :rate)
-	end
-
-	def set_rate
-		self.rate = self.monthly_payment / self.amount
+		params.require(:debt).permit(:type, :amount, :monthly_payment, :rate)
 	end
 
 end

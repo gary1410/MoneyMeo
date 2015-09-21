@@ -4,10 +4,9 @@ class Debt < ActiveRecord::Base
 		['BankLoan', 'CreditCard', 'Mortgage', 'StudentLoan', 'Other']
 	end
 
-	def self.set_rate
-		self.rate = (self.monthly_payment) / (self.amount)
+	def set_rate
+		self.rate = monthly_payment / amount
 	end
-
 
 end
 

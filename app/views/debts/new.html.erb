@@ -1,6 +1,6 @@
 <h3> Lets get started! Click on each category and list all the debt you have outstanding. Fill in the blanks </h3>
 <table>
-	<%= form_for @debt do |f| %>
+	<%= form_for @debt, remote: true, :html => { :id => "debts_entry" }  do |f| %>
 
 	    <%= f.label :type %><br>
 	    <%= f.select(:type, options_for_select(Debt.types.map {|type| [type.titleize, type]})) %>
@@ -13,3 +13,9 @@
 	    <%= f.submit :submit%>
 	<% end %>
 </table>
+
+<div id="debts_table">
+  <%= render partial: 'debts_table', locals: {debts: @debts} %>
+</div>
+  <tr id="debts_append">
+  </tr>

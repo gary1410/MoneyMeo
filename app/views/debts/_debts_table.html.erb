@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <h2>Debt Calculator</h2>
+  <p>Estimate your Expenses</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Monthly Payment</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% debts.each do |debt| %>
+        <tr>
+          <td><%= debt.type %></td>
+          <td><%= debt.amount %></td>
+          <td><%= debt.monthly_payment%></td>
+          <td><%= debt.rate%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

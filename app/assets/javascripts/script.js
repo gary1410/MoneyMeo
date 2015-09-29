@@ -11,13 +11,24 @@ $(document).ready(function(){
 // debtAmount()
 // monthlyPayment()
 // determineValue()
-			$('#debt_amount').on('change', function() {
-				calcRate();
-			});
 
-			$('#debt_monthly_payment').on('change', function(){
-				calcRate();
-			});
+  $("#debts_entry").on("ajax:success", function(e, data, status, xhr){
+  	$("#debts_table").remove();
+  	debugger
+  	// console.log(data)
+    $("#debts_append").append(data.debt_list)
+  }
+  ).on("ajax:error", function(e, xhr, status, error){
+    $("#debts_table").append("<p>ERROR</p>")
+  })
+
+	$('#debt_amount').on('change', function() {
+		calcRate();
+	});
+
+	$('#debt_monthly_payment').on('change', function(){
+		calcRate();
+	});
 
 });
 

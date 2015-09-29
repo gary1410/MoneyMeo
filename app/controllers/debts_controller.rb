@@ -7,6 +7,7 @@ class DebtsController < ApplicationController
 	def new
 		# session[:user_identifier] = Random Hex
 		@debt = Debt.new
+		@debts = Debt.all
 	end
 
 	def create
@@ -15,9 +16,9 @@ class DebtsController < ApplicationController
 		# @debt.user_identifier = session[:user_identifier]
 		if @debt.save
 			flash[:success] = "You've saved your information"
-			redirect_to new_expense_path
+			render json: { debt_list: render_to_string( partial: "debts_table", locals: {debts: [@debt]} ) }
 		else
-			render :new
+			render json: { error: debt.errors.full_messages.join(", ")}, status: :unprocessable_entity
 		end
 	end
 

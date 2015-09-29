@@ -17,5 +17,7 @@
 <div id="debts_table">
   <%= render partial: 'debts_table', locals: {debts: @debts} %>
 </div>
-  <tr id="debts_append">
-  </tr>
+
+
+<%= link_to "Expenses", expenses_path(@debts)%>
+

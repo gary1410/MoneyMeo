@@ -14,11 +14,15 @@ class DebtsController < ApplicationController
 		@debt = Debt.new(debt_params)
 		@debt.set_rate
 		# @debt.user_identifier = session[:user_identifier]
-		if @debt.save
-			flash[:success] = "You've saved your information"
-			render json: { debt_list: render_to_string( partial: "debts_table", locals: {debts: [@debt]} ) }
-		else
-			render json: { error: debt.errors.full_messages.join(", ")}, status: :unprocessable_entity
+		respond_to do |format|
+			if @debt.save
+				flash[:success] = "You've saved your information"
+				format.html { redirect_to debts_path }
+				format.js
+			else
+				format.html { render :action => "new" }
+	      format.js
+			end
 		end
 	end
 

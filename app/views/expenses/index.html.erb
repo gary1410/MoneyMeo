@@ -1,2 +1,47 @@
 <h1>Expenses</h1>
-<%= render @expenses %> 
+<h4>Fill the amount of your monthly obligations (if your montly obligations vary that is ok, we are just trying to see on average what your budget looks like)</h4>
+
+<h5>It's ok to use rough estimates as long as you are being honest with yourself</h5>
+
+<table>
+  <%= form_for @expense, remote: true, :html => { :id => "expense_entry" }  do |f| %>
+
+      <%= f.label :type %><br>
+      <%= f.select(:expense_type, options_for_select(Expense.types.map {|type| [type.titleize, type]})) %>
+      <%= f.label :amount %>
+      <%= f.text_field :amount %>
+      <%= f.submit :submit%>
+  <% end %>
+</table>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+        <%= render partial: "expense", collection: @expenses %>
+  </table>
+</div>
+
+
+<%= link_to "Expenses", expenses_path%>
+
+
+var power = function(base, exponent) {
+var result = 1;
+for (var count = 1; count < exponent; count++)
+result *= base; return result;
+};
+
+var power = function(base, exponent){
+  var result = 1;
+  count = 0
+  while (count < exponent){
+    result *= base
+    count++
+  }
+  return result;
+}

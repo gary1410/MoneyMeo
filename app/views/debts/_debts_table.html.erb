@@ -15,9 +15,9 @@
       <% debts.each do |debt| %>
         <tr>
           <td><%= debt.type %></td>
-          <td><%= debt.amount.round(2) %></td>
-          <td><%= debt.monthly_payment.round(2) %></td>
-          <td><%= debt.rate.round(4) %></td>
+          <td><%= number_with_precision(debt.amount, precision: 2) %></td>
+          <td><%= number_with_precision(debt.monthly_payment, precision: 2) %></td>
+          <td><%= number_with_precision(debt.rate, precision: 4) %></td>
         </tr>
       <% end %>
     </tbody>

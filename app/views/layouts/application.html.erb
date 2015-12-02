@@ -5,6 +5,33 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
+  <% content_for :javascript do %>
+    <script type="text/javascript">
+      var data = [
+        {
+          value: 300,
+          color:"#F7464A",
+          highlight: "#FF5A5E",
+          label: "Red"
+        },
+        {
+          value: 50,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Green"
+        },
+        {
+          value: 100,
+          color: "#FDB45C",
+          highlight: "#FFC870",
+          label: "Yellow"
+      }];
+      var options = {};
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myPieChart = new Chart(ctx).Pie(data,options);
+    </script>
+  <% end %>
 </head>
 <body>
 
@@ -17,11 +44,9 @@
 </nav>
 
 <div class="container">
-
-
-
   <%= yield %>
-
+  <canvas id="myChart" width="400" height="400"></canvas>
 </div>
 </body>
+<%= yield :javascript %>
 </html>

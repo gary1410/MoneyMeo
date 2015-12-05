@@ -21,18 +21,22 @@
 <br />
 <br />
 <hr />
-<canvas id="debtsChart" width="250" height="250"></canvas>
+<canvas id="debtsChart" class="data-charts" width="250" height="250"></canvas>
+<canvas id="debtsRateChart" class="data-charts" width="250" height="250"></canvas>
 
 <% content_for :javascript do %>
   <script type="text/javascript">
-		var data = JSON.parse("<%= escape_javascript(raw(render partial: 'debts', locals: {debts: @debts}, formats: :js)) %>");
-		var options = {
+		var data_debtsChart = JSON.parse("<%= escape_javascript(raw(render partial: 'debts_chart', locals: {debts: @debts}, formats: :js)) %>");
+		var ctx_debtsChart = document.getElementById("debtsChart").getContext("2d");
+		var myPieChart = new Chart(ctx_debtsChart).Pie(data_debtsChart, {
 			animationSteps: 100,
 		  animationEasing: "easeOutBounce",
 		  animateRotate: false
-		};
-		var ctx = document.getElementById("debtsChart").getContext("2d");
-		var myPieChart = new Chart(ctx).Pie(data, options);
+		});
+		
+		var data_debtsRateChart = JSON.parse("<%= escape_javascript(raw(render partial: 'debts_rate_chart', locals: {debts: @debts}, formats: :js)) %>");
+		var ctx_debtsRateChart = document.getElementById("debtsRateChart").getContext("2d");
+		var myBarChart = new Chart(ctx_debtsRateChart).Bar(data_debtsRateChart);
   </script>
 <% end %>
 

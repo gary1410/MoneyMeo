@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MoneyMio</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>  
-</head>
-<body>
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <%= link_to 'Money Mio', root_path, class: 'navbar-brand' %>
+  <head>
+    <title>MoneyMio</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>  
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'Money Mio', root_path, class: 'navbar-brand' %>
+        </div>
       </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="container">
-  <%= yield %>  
-</div>
-</body>
-<%= yield :javascript %>
+    <div class="container">
+      <%= yield %>  
+    </div>
+  </body>
+  <%= yield :javascript %>
 </html>

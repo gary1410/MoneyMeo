@@ -22,13 +22,13 @@ $(document).ready(function(){
   //   $("#debts_table").append("<p>ERROR</p>")
   // })
 
-	$('#debt_amount').on('change', function() {
-		calcRate();
+	$('#debt_amount, #debt_monthly_payment').on('change', function() {
+		$('#rate').val(calcRate())
 	});
 
-	$('#debt_monthly_payment').on('change', function(){
-		calcRate();
-	});
+	// $('#debt_monthly_payment').on('change', function(){
+	// 	calcRate();
+	// });
 
 });
 
@@ -49,8 +49,8 @@ $(document).ready(function(){
 	function calcRate(){
 			var amount = determineValue($('#debt_amount'))
 			var monthlyPayment = determineValue($('#debt_monthly_payment'))
-			var rate = $('#rate').val(monthlyPayment/amount);
-			return rate
+			var rate = monthlyPayment/amount
+			return Math.round((rate + 0.00001) * 10000) / 10000
 		}
 
 	function determineValue(selector){

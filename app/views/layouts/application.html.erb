@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MoneyMio</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          Money Mio
-        </a>
+  <head>
+    <title>MoneyMio</title>
+    
+    <link rel="shortcut icon" type="image/png" href=<%= image_url('favicon.png') %> >
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>  
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'Money Mio', root_path, class: 'navbar-brand' %>
+        </div>
       </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>  
     </div>
-</nav>
-
-<div class="container">
-
-
-
-  <%= yield %>
-
-</div>
-</body>
+  </body>
+  <%= yield :javascript %>
 </html>
